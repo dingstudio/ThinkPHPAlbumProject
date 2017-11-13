@@ -15,7 +15,7 @@ function postlogin() {
         dataType: "xml",
         async: false,
         success: function (response, xml) {
-            console.log(response);
+            //console.log(response);
             var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
@@ -57,7 +57,7 @@ function postreg() {
         dataType: "xml",
         async: false,
         success: function (response, xml) {
-            console.log(response);
+            //console.log(response);
             var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
@@ -89,7 +89,7 @@ function logout() {
         dataType: "xml",
         async: false,
         success: function (response, xml) {
-            console.log(response);
+            //console.log(response);
             var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
@@ -111,68 +111,60 @@ function logout() {
     });
 }
 
-/* 封装ajax函数
- * @param {string}opt.type http连接的方式，包括POST和GET两种方式
- * @param {string}opt.url 发送请求的url
- * @param {boolean}opt.async 是否为异步请求，true为异步的，false为同步的
- * @param {object}opt.data 发送的参数，格式为对象类型
- * @param {function}opt.success ajax发送并接收成功调用的回调函数
- */
-/*function ajax(opt) {
-    opt = opt || {};
-    opt.method = opt.method.toUpperCase() || 'POST';
-    opt.url = opt.url || '';
-    opt.async = opt.async || true;
-    opt.data = opt.data || null;
-    opt.isXML = opt.isXML || null;
-    opt.success = opt.success || function () { };
-    opt.failure = opt.failure || function () { };
-    var xhr = null;
-    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xhr = new XMLHttpRequest();
-    }
-    else {
-        xhr = new ActiveXObject('Microsoft.XMLHTTP');
-    }
-    var params = [];
-    for (var key in opt.data) {
-        params.push(key + '=' + opt.data[key]);
-    }
-    var postData = params.join('&');
-    if (opt.method.toUpperCase() === 'POST') {
-        xhr.open(opt.method, opt.url, opt.async);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
-        xhr.send(postData);
-    }
-    else if (opt.method.toUpperCase() === 'GET') {
-        xhr.open(opt.method, opt.url + '?' + postData, opt.async);
-        xhr.send(null);
-    }
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            if (opt.isXML) {
-                opt.success(xhr.responseXML);
+function submit_main() {
+    var m_name = document.getElementById('myalbum_name').innerText;
+    var m_nickname = document.getElementById('myalbum_nickname').innerText;
+    var m_icon = document.getElementById('myalbum_icon').innerText;
+    var m_logo = document.getElementById('myalbum_logo').innerText;
+    var m_saying = document.getElementById('myalbum_saying').innerText;
+    var m_author = document.getElementById('myalbum_author').innerText;
+    var m_copyright = document.getElementById('myalbum_copyright').innerText;
+    var m_jsondata = '{"name":"' + m_name + '","nickname":"' + m_nickname + '","icon":"' + m_icon + '","logo":"' + m_logo + '","saying":"' + m_saying + '","author":"' + m_author + '","copyright":"' + m_copyright + '"}';
+    ajax({
+        url: "./api.php?c=index&a=operate",
+        type: 'POST',
+        data: {
+            mod: 'baseinfo',
+            type: 'write',
+            token: operator_id,
+            data: m_jsondata
+        },
+        dataType: "xml",
+        async: false,
+        success: function (response, xml) {
+            //console.log(response);
+            var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
+            var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
+            if (authcode == 200) {
+                alertify.notify(message, 'success', 5, function(){ console.log('Main info update succeed!'); });
+                return true;
             }
             else {
-                opt.success(xhr.responseText);
+                alertify.notify('提交失败，错误详情：' + message, 'error', 5, function(){ console.log('Main info update failed!'); });
+                return true;
             }
+        },
+        fail: function (status) {
+            alertify.notify('远程服务器忙碌！', 'error', 5, function(){ console.log('注销发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
+            return false;
         }
-        else {
-            opt.failure(xhr.status);
-        }
-    };
-}*/
-
-function showError(message_str) {
-    /*
-    var msg_string = '<div class="ivu-message-notice move-up-leave-active move-up-leave-to" style="height: 50px;"><div class="ivu-message-notice-content"><div class="ivu-message-notice-content-text"><div class="ivu-message-custom-content ivu-message-error"><i class="ivu-icon ivu-icon-close-circled"></i><span>' + message_str + '</span></div></div></div></div>';
-    document.getElementById('msgbox').innerHTML = msg_string;
-    */
-    alert(message_str);
+    });
 }
 
-function log(logstr) {
-    console.log(logstr);
+function create_navi() {
+
+}
+
+function submit_navi() {
+
+}
+
+function create_navi() {
+    
+}
+
+function submit_navi() {
+    
 }
 
 /**
@@ -256,8 +248,8 @@ function getParams(data) {
     for (var param in data) {
         arr.push(encodeURIComponent(param) + '=' + encodeURIComponent(data[param]));
     }
-    console.log(arr);
+    //console.log(arr); //输出加入随机数参数之前的arr
     arr.push(('randomNumber=' + Math.random()).replace('.'));
-    console.log(arr);
+    //console.log(arr); //输出加入随机数参数之后的arr
     return arr.join('&');
 }

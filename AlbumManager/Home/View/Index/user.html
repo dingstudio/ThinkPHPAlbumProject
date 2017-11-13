@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="{$myalbum_icon}" />
 		<link rel="Bookmark" href="{$myalbum_icon}" />
         <title>
-            {$myalbum_name}-后台管理
+            {$myalbum_name}-用户管理
         </title>
         <!-- Bootstrap core CSS -->
         <link href="__PUBLIC__/Album-Admin/assets/css/bootstrap.css" rel="stylesheet">
@@ -28,7 +28,6 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
             </script>
         <![endif]-->
-        <script>var operator_id = '{$session_id}';</script>
     </head>
     <body>
         <section id="container">
@@ -76,7 +75,7 @@
                             {$session_name}
                         </h5>
                         <li class="mt">
-                            <a class="active" href="./admin.php">
+                            <a href="./admin.php">
                                 <i class="fa fa-gear">
                                 </i>
                                 <span>
@@ -85,7 +84,7 @@
                             </a>
                         </li>
                         <li class="sub-menu">
-                            <a href="javascript:;">
+                            <a class="active" href="javascript:;">
                                 <i class="fa fa-cogs"></i>
                                 <span>
                                     基本管理
@@ -97,7 +96,7 @@
                                         导航管理
                                     </a>
                                 </li>
-                                <li>
+                                <li class="active">
                                     <a href="./admin.php?a=user">
                                         用户管理
                                     </a>
@@ -137,85 +136,82 @@
                         <i class="fa fa-angle-right"></i>
                         <a href="./admin.php">后台管理</a>
                         <i class="fa fa-angle-right"></i>
-                        基本信息
+                        用户管理
                     </h3>
+
+                    <!-- SORTABLE TO DO LIST -->
                     <div class="row mt mb">
-                        <div class="col-md-12 table-responsive">
+                        <div class="col-md-12">
                             <section class="task-panel tasks-widget pn-s">
                                 <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册名称</th>
-                                        <th id="myalbum_name" contenteditable>{$myalbum_name}</th>
-                                    </tbody>
+                                    <thead>
+                                        <th>新增权限用户</th>
+                                    </thead>
                                 </table>
                             </section>
 
                             <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">英文昵称</th>
-                                        <th id="myalbum_nickname" contenteditable>{$myalbum_nickname}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册说明</th>
-                                        <th id="myalbum_saying" contenteditable>{$myalbum_saying}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册作者</th>
-                                        <th id="myalbum_author" contenteditable>{$myalbum_author}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册版权</th>
-                                        <th id="myalbum_copyright" contenteditable>{$myalbum_copyright}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册图标</th>
-                                        <th id="myalbum_icon" contenteditable>{$myalbum_icon}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-                            
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册标志</th>
-                                        <th id="myalbum_logo" contenteditable>{$myalbum_logo}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-
-                            <a onclick="submit_main()" href="#">
-                                <section class="task-panel tasks-widget pn-s">
                                     <table class="table table-bordered table-striped table-hover">
                                         <tbody>
-                                            <th class="text-center">确认修改并提交</th>
+                                            <td>
+                                                <div class="add-task-row">
+                                                    <form>
+                                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                                            <input type="text" class="form-control"  id="add_username" placeholder="用户名">
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                                            <input type="text" class="form-control" id="add_userpassword" placeholder="用户密码">
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                                            <input type="text" class="form-control" id="add_useremail" placeholder="用户邮箱">
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                                            <button type="submit" class="btn btn-theme text-center" style="width:100%">添加用户</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </td>
                                         </tbody>
                                     </table>
-                                </section>
-                            </a>
+                            </section>
+
+                            <section class="task-panel tasks-widget pn-s">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <th>权限用户修改</th>
+                                    </thead>
+                                </table>
+                            </section>
+
+                            <section class="task-panel tasks-widget pn-s">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr> 
+                                            <th class="numeric text-center">#</th>
+                                            <th class="text-center">用户名</th>
+                                            <th class="text-center">密码</th>
+                                            <th class="text-center">E-mail</th>
+                                            <th class="numeric text-center">编辑</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <foreach name="userlist" item="vo">
+                                            <tr>
+                                                <td class="numeric text-center">{$vo.uid}</td>
+                                                <td id="uname_{$vo.uid}" contenteditable>{$vo.username}</td>
+                                                <td id="upass_{$vo.uid}" class="text-center" contenteditable>输入新密码以重置</td>
+                                                <td id="umail_{$vo.uid}" contenteditable>{$vo.email}</td>
+                                                <td id="usbmt_{$vo.uid}" class="text-center"><a href="#">保存</a></td>
+                                            </tr>
+                                        </foreach>
+                                    </tbody>
+                                </table>
+                            </section>
                         </div>
+                        <!--/col-md-12 -->
                     </div>
-            </section>
+                    <!-- /row -->
+                </section>
                 <!--/wrapper -->
 
                 <!--footer start-->

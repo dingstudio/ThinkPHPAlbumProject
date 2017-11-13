@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="{$myalbum_icon}" />
 		<link rel="Bookmark" href="{$myalbum_icon}" />
         <title>
-            {$myalbum_name}-后台管理
+            {$myalbum_name}-导航管理
         </title>
         <!-- Bootstrap core CSS -->
         <link href="__PUBLIC__/Album-Admin/assets/css/bootstrap.css" rel="stylesheet">
@@ -28,7 +28,6 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
             </script>
         <![endif]-->
-        <script>var operator_id = '{$session_id}';</script>
     </head>
     <body>
         <section id="container">
@@ -76,7 +75,7 @@
                             {$session_name}
                         </h5>
                         <li class="mt">
-                            <a class="active" href="./admin.php">
+                            <a href="./admin.php">
                                 <i class="fa fa-gear">
                                 </i>
                                 <span>
@@ -85,14 +84,14 @@
                             </a>
                         </li>
                         <li class="sub-menu">
-                            <a href="javascript:;">
+                            <a class="active" href="javascript:;">
                                 <i class="fa fa-cogs"></i>
                                 <span>
                                     基本管理
                                 </span>
                             </a>
                             <ul class="sub">
-                                <li>
+                                <li class="active">
                                     <a href="./admin.php?a=navi">
                                         导航管理
                                     </a>
@@ -137,85 +136,73 @@
                         <i class="fa fa-angle-right"></i>
                         <a href="./admin.php">后台管理</a>
                         <i class="fa fa-angle-right"></i>
-                        基本信息
+                        导航管理
                     </h3>
+
+                    <!-- SORTABLE TO DO LIST -->
                     <div class="row mt mb">
-                        <div class="col-md-12 table-responsive">
+                        <div class="col-md-12">
                             <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册名称</th>
-                                        <th id="myalbum_name" contenteditable>{$myalbum_name}</th>
-                                    </tbody>
-                                </table>
+                                <div class="panel-heading">
+                                    <div class="pull-left col-sm-12">
+                                        <h5>
+                                            <i class="fa fa-list"></i> 导航列表
+                                            <span class="label label-default">导航序号</span>
+                                            <span class="label label-primary">导航名称</span>
+                                            <span class="label label-info">导航链接</span>
+                                        </h5>
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="task-content col-sm-12">
+                                        <ul id="sortable" class="task-list">
+                                            <foreach name="navibar" item="vo">
+                                                <li>
+                                                    <i class="fa fa-ellipsis-v"></i>
+                                                    <div class="task-title">
+                                                        <span class="label label-default">
+                                                            {$vo.nid}
+                                                        </span>
+                                                        &nbsp;
+                                                        <span class="label label-primary">
+                                                            {$vo.navi}
+                                                        </span>
+                                                        &nbsp;
+                                                        <span class="label label-info">
+                                                            {$vo.link}
+                                                        </span>
+                                                        <div class="pull-right">
+                                                            <button class="btn btn-success btn-xs fa fa-check  hidden-phone"></button>
+                                                            <button class="btn btn-warning btn-xs fa fa-pencil  hidden-phone"></button>
+                                                            <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                                        </div>
+                                                    </div>
+                                                    <a href="{$vo.link}"></a>
+                                                </li>
+                                            </foreach>
+                                        </ul>
+                                    </div>
+                                    <div class="add-task-row">
+                                        <form>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" style="margin-bottom:5px;" id="navitag" placeholder="导航名称">
+                                            </div>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" style="margin-bottom:5px;" id="navilink" placeholder="导航链接">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <button type="submit" class="btn btn-theme" style="width:100%">添加导航</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </section>
-
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">英文昵称</th>
-                                        <th id="myalbum_nickname" contenteditable>{$myalbum_nickname}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册说明</th>
-                                        <th id="myalbum_saying" contenteditable>{$myalbum_saying}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册作者</th>
-                                        <th id="myalbum_author" contenteditable>{$myalbum_author}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册版权</th>
-                                        <th id="myalbum_copyright" contenteditable>{$myalbum_copyright}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册图标</th>
-                                        <th id="myalbum_icon" contenteditable>{$myalbum_icon}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-                            
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">相册标志</th>
-                                        <th id="myalbum_logo" contenteditable>{$myalbum_logo}</th>
-                                    </tbody>
-                                </table>
-                            </section>
-
-                            <a onclick="submit_main()" href="#">
-                                <section class="task-panel tasks-widget pn-s">
-                                    <table class="table table-bordered table-striped table-hover">
-                                        <tbody>
-                                            <th class="text-center">确认修改并提交</th>
-                                        </tbody>
-                                    </table>
-                                </section>
-                            </a>
                         </div>
+                        <!--/col-md-12 -->
                     </div>
-            </section>
+                    <!-- /row -->
+                </section>
                 <!--/wrapper -->
 
                 <!--footer start-->
