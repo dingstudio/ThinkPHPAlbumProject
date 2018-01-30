@@ -17,7 +17,7 @@ class IndexController extends Controller {
 		$this -> assign('myalbum_thisyear',date('Y'));
 		//var_dump($info); //用于输出测试
 		//查询数据库中页面导航部分
-		$this -> navibar = M('myalbum_navi') -> order("nid asc") -> select();
+		$this -> navibar = M('myalbum_navi') -> order("nsid asc") -> select();
 		//查询数据库中相册封面部分
 		$this -> cover = M('myalbum_cover') -> where("open='%d'",1) -> order("cid asc") -> select();
 		$this -> display();
