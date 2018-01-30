@@ -14,7 +14,7 @@ class IndexController extends APIController {
         );
         APIController::api($result);
 	}
-	
+
 	/**
 	 * 用户登录过程
 	 */
@@ -52,7 +52,7 @@ class IndexController extends APIController {
 			APIController::api($result);
 		}
 	}
-	
+
 	/**
 	 * 用户信息的注册登记
 	 */
@@ -289,7 +289,7 @@ class IndexController extends APIController {
 			);
 		}
 		else {
-			$image = new \Think\Image(); 
+			$image = new \Think\Image();
 			$image->open($upload_urlpath);
 			$image->thumb(1024, 683)->save($upload_urlpath.'.thumb.jpg');
 			$picinfo = M('myalbum_photo');
@@ -669,7 +669,7 @@ class IndexController extends APIController {
 			case 500:
 			$result = array(
 				'code'  =>  500,
-				'message'   =>  '用户移除失败，可能系统处于忙碌状态或数据库处于只读封禁模式。如果此情况多次出现，请联系系统管理员！',
+				'message'   =>  '数据库操作失败，可能您在没有改动任何内容的情况下提交了请求、系统处于忙碌状态数据库处于只读封禁模式。如果此情况多次出现，请联系系统管理员！',
 				'requestId' =>  date('YmdHis',time())
 			);
 			APIController::api($result);
