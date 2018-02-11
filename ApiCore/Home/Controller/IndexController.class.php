@@ -278,13 +278,14 @@ class IndexController extends APIController {
 		}
 		$upload_urlpath = $upload->rootPath.$upload_result['add_upload']['savepath'].$upload_result['add_upload']['savename'];
 		if (C('FILE_UPLOAD_TYPE') != 'Local') {
+			$thumb_urlpath = C('STATIC_SRV').'/'.$upload_urlpath.C('THUMB_MODEL');
 			$upload_urlpath = C('STATIC_SRV').'/'.$upload_urlpath;
 			$picinfo = M('myalbum_photo');
 			$picdata = array(
 				'cid'	=>	$_POST['current_cid'],
 				'name'	=>	$_POST['add_photoname'],
 				'inst'	=>	$_POST['add_photoinst'],
-				'preimg'	=>	$upload_urlpath,
+				'preimg'	=>	$thumb_urlpath,
 				'bigimg'	=>	$upload_urlpath
 			);
 		}
