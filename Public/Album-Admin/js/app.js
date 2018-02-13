@@ -33,6 +33,8 @@ function postlogin() {
                 //注册被服务器拒绝
                 alertify.notify('用户名或密码错误！', 'error', 5, function(){ console.log('登录发生异常，可能是用户名或密码有误。错误代码：' + authcode + '，错误详情：' + message + '。此信息仅供技术人员鉴定系统运行状态！'); });
                 //alert("登录失败！用户名或密码不正确，错误原因：" + message);
+                document.getElementById('pswd').value = '';
+                document.getElementById('pswd').focus();
                 return authcode;
             }
         },

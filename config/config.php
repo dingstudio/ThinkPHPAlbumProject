@@ -12,6 +12,7 @@
 		'URL_MODEL'	=>	0, //URL模式设置，用于服务器伪静态处理
 
 		'STATIC_SRV'	=>	'http://ouralbum-demo.test.upcdn.net', //仅在启用云存储后有效，如又拍云驱动。（末尾无需加斜杠，存库时会自动添加）
+		'THUMB_MODEL'	=>	'!module.v1', //启用云存储后的缩略图模型（确保在又拍云后台开启了该图像处理版本，并设置了正确的间隔标识符）
 		'FILE_UPLOAD_TYPE' => 'Local', //配置上传驱动，目前支持：本地、又拍云、FTP等存储
 		'UPLOAD_TYPE_CONFIG' => array(
 			//又拍云host，默认即可
