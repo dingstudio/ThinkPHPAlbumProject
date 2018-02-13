@@ -4,7 +4,7 @@ use Think\Controller;
 class WebAuthorityController extends Controller {
   	public function _initialize() {
     	if(cookie("myalbum_token") == null || session("myalbum_token") == null){
-          	$this->error('您没有登陆，正在跳转到登录页。',__ROOT__.'/admin.php?c=Login', 1); //尚未登录时跳回登录页面，防止URL输入恶意访问后台管理系统
+          	$this->error('您没有登陆，正在跳转到登录页。',__ROOT__.'/admin.php?c=Login&target='.urlencode($_SERVER['REQUEST_URI']), 1); //尚未登录时跳回登录页面，防止URL输入恶意访问后台管理系统
 		}
 		else if (cookie("myalbum_token") != session("myalbum_token")) {
 			session("myalbum_token",null);
