@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else {
         $user = file_get_contents('https://passport.dingstudio.cn/api?format=json&action=verify&token='.htmlspecialchars($_REQUEST['newtoken']).'&reqtime='.sha1(date('YmdHis',time())));
         $userinfo = json_decode($user);
-        if ($userinfo->data->username != null && $userinfo->data->newtoken != null) {
+        if (isset($userinfo->data->username) && isset($userinfo->data->newtoken)) {
             setcookie('myalbum_token', $userinfo->data->newtoken, time() + 1800, '/', $_SERVER['HTTP_HOST']);
             $_SESSION['myalbum_user'] = $userinfo->data->username;
             $_SESSION['myalbum_token'] = $userinfo->data->newtoken;
