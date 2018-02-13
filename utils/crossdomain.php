@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             setcookie('myalbum_token', $userinfo->data->newtoken, time() + 1800, '/', $_SERVER['HTTP_HOST']);
             $_SESSION['myalbum_user'] = $userinfo->data->username;
             $_SESSION['myalbum_token'] = $userinfo->data->newtoken;
+            $_SESSION['myalbum_email'] = $userinfo->data->usermail;
             die('{"status":true}');
         }
         else {
