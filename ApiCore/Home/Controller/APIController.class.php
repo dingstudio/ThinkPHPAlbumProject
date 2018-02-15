@@ -21,6 +21,11 @@ class APIController extends Controller {
 			);
 			$this->ajaxReturn($arr, 'xml');
 		}
-		$this->ajaxReturn($data, 'xml');
+		else if (I('callback','','htmlspecialchars') != '') {
+			$this->ajaxReturn($data, 'jsonp');
+		}
+		else {
+			$this->ajaxReturn($data, 'xml');
+		}
 	}
 }
