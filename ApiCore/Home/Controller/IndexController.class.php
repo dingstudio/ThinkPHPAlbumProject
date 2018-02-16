@@ -623,7 +623,7 @@ class IndexController extends APIController {
 		if ($s_token == null) {
 			self::showError(401);
 		}
-		else if ($s_token != session('myalbum_token')) {
+		else if ($s_token != cookie('myalbum_token') || $s_token != session('myalbum_token')) {
 			self::showError(403);
 		}
 	}

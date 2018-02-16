@@ -25,7 +25,7 @@ function postlogin() {
                 //服务器返回注册成功
                 alertify.notify('登录成功！3秒后自动跳转。', 'success', 3, function(){ console.log('Login successed'); });
                 window.setTimeout(function(){
-                    location.href = "./admin.php";
+                    location.href = getUrlParam('target');
                 },3000);
                 return true;
             }
@@ -603,4 +603,25 @@ function getParams(data) {
     arr.push(('randomNumber=' + new Date().getTime()));
     //console.log(arr); //输出加入随机数参数之后的arr
     return arr.join('&');
+}
+
+/**
+ * 获取url中的参数
+ * @param name
+ * @returns {string}
+ */
+function getUrlParam(name) {
+	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+	/*
+	// 由于本实例中url参数将用于重定向，而某些情况下url参数会以null形式返回导致出现404问题
+	// 所以这里特别修改了空值时的返回模型
+	if (r != null) return unescape(r[2]); return null; //返回参数值
+	*/
+	if (r != null) {
+		return unescape(r[2]); //返回参数值
+	}
+	else {
+		return "/";
+	}
 }
