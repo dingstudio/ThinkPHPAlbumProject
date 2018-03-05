@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class APIController extends Controller {
   	function checkPerm() {
-    	if(!isset($_COOKIE['myalbum_token']) || $_COOKIE['myalbum_token'] == '') {
+    	if(!isset($_SESSION['myalbum_token']) || $_SESSION['myalbum_token'] == '') {
 			$arr = array(
 				'code'	=>	403,
 				'message'	=>	'您没有相应权限访问该接口，请传入有效的token或登录有效帐号后再次尝试。',
