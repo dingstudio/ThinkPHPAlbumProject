@@ -1,289 +1,292 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="Dashboard">
-        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-        <meta name="theme-color" content="#FFD777">
-        <link rel="shortcut icon" href="{$myalbum_icon}">
-        <link rel="Bookmark" href="{$myalbum_icon}">
-        <title>
-            {$myalbum_name}-后台管理
-        </title>
-        <link href="__PUBLIC__/Album-Admin/assets/css/bootstrap.css" rel="stylesheet">
-        <link rel="stylesheet" href="__PUBLIC__/FontAwesome/css/font-awesome.min.css"
-        rel="stylesheet">
-        <link href="__PUBLIC__/Album-Admin/assets/css/style.css" rel="stylesheet">
-        <link href="__PUBLIC__/Album-Admin/assets/css/style-responsive.css" rel="stylesheet">
-        <link rel="stylesheet" href="__PUBLIC__/Album-Admin/assets/css/to-do.css">
-        <!--[if lt IE 9]>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <meta name="theme-color" content="#FFD777">
+    <link rel="shortcut icon" href="{$myalbum_icon}">
+    <link rel="Bookmark" href="{$myalbum_icon}">
+    <title>
+        {$myalbum_name}-后台管理
+    </title>
+    <link href="__PUBLIC__/Album-Admin/assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/FontAwesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/Album-Admin/assets/css/style.css" rel="stylesheet">
+    <link href="__PUBLIC__/Album-Admin/assets/css/style-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/Album-Admin/assets/css/to-do.css">
+    <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
             </script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
             </script>
         <![endif]-->
-        <script>var operator_id = "{$session_id}";</script>
-    </head>
-    
-    <body>
-        <section id="container">
-            <header class="header black-bg">
-                <div class="sidebar-toggle-box">
-                    <div class="fa fa-bars tooltips" data-placement="right" data-original-title="点击呼出导航">
-                    </div>
+    <script>var operator_id = "{$session_id}";</script>
+</head>
+
+<body>
+    <section id="container">
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="点击呼出导航">
                 </div>
-                <a href="./index.php" class="logo">
-                    <b style="line-height:36px">
-                        {$myalbum_name} 后台
-                    </b>
-                </a>
-                <div class="top-menu">
-                    <ul class="nav pull-right top-menu">
-                        <li>
-                            <a class="logout" href="./admin.php?c=lock">
-                                <i class="fa fa-lock">
-                                </i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="logout" href="#/logout" onclick="logout()">
-                                注销
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </header>
-            <aside>
-                <div id="sidebar" class="nav-collapse">
-                    <ul class="sidebar-menu" id="nav-accordion">
-                        <p class="centered">
-                            <a href="https://cn.gravatar.com/profiles/edit/#about-you" title="点击去自定义你的头像">
-                                <img src="{$session_avatar}" class="img-circle" width="60">
-                            </a>
-                        </p>
-                        <h5 class="centered">
-                            {$session_name}
-                        </h5>
-                        <li class="mt">
-                            <a class="active" href="./admin.php">
-                                <i class="fa fa-gear">
-                                </i>
-                                <span>
-                                    仪表盘
-                                </span>
-                            </a>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-cogs">
-                                </i>
-                                <span>
-                                    基本管理
-                                </span>
-                            </a>
-                            <ul class="sub">
-                                <li>
-                                    <a href="./admin.php?a=navi">
-                                        导航管理
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="./admin.php?a=user">
-                                        用户管理
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-cogs">
-                                </i>
-                                <span>
-                                    内容管理
-                                </span>
-                            </a>
-                            <ul class="sub">
-                                <li>
-                                    <a href="./admin.php?a=album">
-                                        相册管理
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="./admin.php?a=photo">
-                                        相片管理
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-            <section id="main-content">
-                <section class="wrapper">
-                    <h3>
-                        <i class="fa fa-angle-right">
-                        </i>
-                        <a href="./admin.php">
-                            后台管理
+            </div>
+            <a href="./index.php" class="logo">
+                <b style="line-height:36px">
+                    {$myalbum_name} 后台
+                </b>
+            </a>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                    <li>
+                        <a class="logout" href="./admin.php?c=lock">
+                            <i class="fa fa-lock">
+                            </i>
                         </a>
-                        <i class="fa fa-angle-right">
-                        </i>
-                        基本信息
-                    </h3>
-                    <div class="row mt mb">
-                        <div class="col-md-12 table-responsive">
+                    </li>
+                    <li>
+                        <a class="logout" href="#/logout" onclick="logout()">
+                            注销
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <aside>
+            <div id="sidebar" class="nav-collapse">
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <p class="centered">
+                        <a href="https://cn.gravatar.com/profiles/edit/#about-you" title="点击去自定义你的头像">
+                            <img src="{$session_avatar}" class="img-circle" width="60">
+                        </a>
+                    </p>
+                    <h5 class="centered">
+                        {$session_name}
+                    </h5>
+                    <li class="mt">
+                        <a class="active" href="./admin.php">
+                            <i class="fa fa-gear">
+                            </i>
+                            <span>
+                                仪表盘
+                            </span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-cogs">
+                            </i>
+                            <span>
+                                基本管理
+                            </span>
+                        </a>
+                        <ul class="sub">
+                            <li>
+                                <a href="./admin.php?a=navi">
+                                    导航管理
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./admin.php?a=user">
+                                    用户管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-cogs">
+                            </i>
+                            <span>
+                                内容管理
+                            </span>
+                        </a>
+                        <ul class="sub">
+                            <li>
+                                <a href="./admin.php?a=album">
+                                    相册管理
+                                </a>
+                            </li>
+                            <li>
+                                <a href="./admin.php?a=photo">
+                                    相片管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <section id="main-content">
+            <section class="wrapper">
+                <h3>
+                    <i class="fa fa-angle-right">
+                    </i>
+                    <a href="./admin.php">
+                        后台管理
+                    </a>
+                    <i class="fa fa-angle-right">
+                    </i>
+                    基本信息
+                </h3>
+                <div class="row mt mb">
+                    <div class="col-md-12 table-responsive">
+                        <section class="task-panel tasks-widget pn-s">
+                            <table class="table table-bordered table-striped table-hover">
+                                <thead>
+                                    <th>
+                                        <i class="fa fa-list"></i>
+                                        点击表格项修改后提交 - 当前登录IP：{$current_ipaddr}
+                                    </th>
+                                </thead>
+                            </table>
+                        </section>
+                        <section class="task-panel tasks-widget pn-s">
+                            <table class="table table-bordered table-striped table-hover">
+                                <tbody class="autoenter">
+                                    <th class="col-xs-1 text-center">
+                                        相册名称
+                                    </th>
+                                    <th id="myalbum_name" contenteditable>
+                                        {$myalbum_name}
+                                    </th>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section class="task-panel tasks-widget pn-s">
+                            <table class="table table-bordered table-striped table-hover">
+                                <tbody class="autoenter">
+                                    <th class="col-xs-1 text-center">
+                                        英文昵称
+                                    </th>
+                                    <th id="myalbum_nickname" contenteditable>
+                                        {$myalbum_nickname}
+                                    </th>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section class="task-panel tasks-widget pn-s">
+                            <table class="table table-bordered table-striped table-hover">
+                                <tbody class="autoenter">
+                                    <th class="col-xs-1 text-center">
+                                        相册说明
+                                    </th>
+                                    <th id="myalbum_saying" contenteditable>
+                                        {$myalbum_saying}
+                                    </th>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section class="task-panel tasks-widget pn-s">
+                            <table class="table table-bordered table-striped table-hover">
+                                <tbody class="autoenter">
+                                    <th class="col-xs-1 text-center">
+                                        相册作者
+                                    </th>
+                                    <th id="myalbum_author" contenteditable>
+                                        {$myalbum_author}
+                                    </th>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section class="task-panel tasks-widget pn-s">
+                            <table class="table table-bordered table-striped table-hover">
+                                <tbody class="autoenter">
+                                    <th class="col-xs-1 text-center">
+                                        相册版权
+                                    </th>
+                                    <th id="myalbum_copyright" contenteditable>
+                                        {$myalbum_copyright}
+                                    </th>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section class="task-panel tasks-widget pn-s">
+                            <table class="table table-bordered table-striped table-hover">
+                                <tbody class="autoenter">
+                                    <th class="col-xs-1 text-center">
+                                        相册图标
+                                    </th>
+                                    <th id="myalbum_icon" contenteditable>
+                                        {$myalbum_icon}
+                                    </th>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section class="task-panel tasks-widget pn-s">
+                            <table class="table table-bordered table-striped table-hover">
+                                <tbody class="autoenter">
+                                    <th class="col-xs-1 text-center">
+                                        相册标志
+                                    </th>
+                                    <th id="myalbum_logo" contenteditable>
+                                        {$myalbum_logo}
+                                    </th>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section class="task-panel tasks-widget pn-s">
+                            <table class="table table-bordered table-striped table-hover">
+                                <tbody class="autoenter">
+                                    <th class="col-xs-1 text-center">
+                                        上传驱动
+                                    </th>
+                                    <th>
+                                        当前正在使用：
+                                        <span style="color: rgb(255, 0, 0)">{$upload_driver_current}</span> --- 如需修改，请进入服务器编辑
+                                        <span style="color: rgb(255, 0, 0)">config.php</span>
+                                    </th>
+                                </tbody>
+                            </table>
+                        </section>
+                        <section class="task-panel tasks-widget pn-s">
+                            <table class="table table-bordered table-striped table-hover">
+                                <tbody class="autoenter">
+                                    <th class="col-xs-1 text-center">
+                                        数据中心
+                                    </th>
+                                    <th>
+                                        当前正在使用：
+                                        <span style="color: rgb(255, 0, 0)">{$static_host}</span> --- 如需修改，请进入服务器编辑
+                                        <span style="color: rgb(255, 0, 0)">config.php</span>
+                                    </th>
+                                </tbody>
+                            </table>
+                        </section>
+                        <a onclick="submit_main()" href="#">
                             <section class="task-panel tasks-widget pn-s">
                                 <table class="table table-bordered table-striped table-hover">
-                                    <thead>
-                                        <th>
-                                            <i class="fa fa-list"></i>
-                                            点击表格项修改后提交 - 当前登录IP：{$current_ipaddr}
-                                        </th>
-                                    </thead>
-                                </table>
-                            </section>
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">
-                                            相册名称
-                                        </th>
-                                        <th id="myalbum_name" contenteditable>
-                                            {$myalbum_name}
+                                    <tbody>
+                                        <th class="text-center">
+                                            确认修改并提交
                                         </th>
                                     </tbody>
                                 </table>
                             </section>
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">
-                                            英文昵称
-                                        </th>
-                                        <th id="myalbum_nickname" contenteditable>
-                                            {$myalbum_nickname}
-                                        </th>
-                                    </tbody>
-                                </table>
-                            </section>
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">
-                                            相册说明
-                                        </th>
-                                        <th id="myalbum_saying" contenteditable>
-                                            {$myalbum_saying}
-                                        </th>
-                                    </tbody>
-                                </table>
-                            </section>
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">
-                                            相册作者
-                                        </th>
-                                        <th id="myalbum_author" contenteditable>
-                                            {$myalbum_author}
-                                        </th>
-                                    </tbody>
-                                </table>
-                            </section>
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">
-                                            相册版权
-                                        </th>
-                                        <th id="myalbum_copyright" contenteditable>
-                                            {$myalbum_copyright}
-                                        </th>
-                                    </tbody>
-                                </table>
-                            </section>
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">
-                                            相册图标
-                                        </th>
-                                        <th id="myalbum_icon" contenteditable>
-                                            {$myalbum_icon}
-                                        </th>
-                                    </tbody>
-                                </table>
-                            </section>
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">
-                                            相册标志
-                                        </th>
-                                        <th id="myalbum_logo" contenteditable>
-                                            {$myalbum_logo}
-                                        </th>
-                                    </tbody>
-                                </table>
-                            </section>
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">
-                                            上传驱动
-                                        </th>
-                                        <th>
-                                            当前正在使用：<span style="color: rgb(255, 0, 0)">{$upload_driver_current}</span> --- 如需修改，请进入服务器编辑<span style="color: rgb(255, 0, 0)">config.php</span>
-                                        </th>
-                                    </tbody>
-                                </table>
-                            </section>
-                            <section class="task-panel tasks-widget pn-s">
-                                <table class="table table-bordered table-striped table-hover">
-                                    <tbody class="autoenter">
-                                        <th class="col-xs-1 text-center">
-                                            数据中心
-                                        </th>
-                                        <th>
-                                            当前正在使用：<span style="color: rgb(255, 0, 0)">{$static_host}</span> --- 如需修改，请进入服务器编辑<span style="color: rgb(255, 0, 0)">config.php</span>
-                                        </th>
-                                    </tbody>
-                                </table>
-                            </section>
-                            <a onclick="submit_main()" href="#">
-                                <section class="task-panel tasks-widget pn-s">
-                                    <table class="table table-bordered table-striped table-hover">
-                                        <tbody>
-                                            <th class="text-center">
-                                                确认修改并提交
-                                            </th>
-                                        </tbody>
-                                    </table>
-                                </section>
-                            </a>
-                        </div>
+                        </a>
                     </div>
-                </section>
-                <footer id="site-footer">
-                    <div class="text-center">
-                        Copyright &copy; {$myalbum_thisyear} {$myalbum_copyright} All rights reserved
-                    </div>
-                </footer>
+                </div>
             </section>
+            <footer id="site-footer">
+                <div class="text-center">
+                    Copyright &copy; {$myalbum_thisyear} {$myalbum_copyright} All rights reserved
+                </div>
+            </footer>
         </section>
-        <script src="__PUBLIC__/Album-Admin/assets/js/jquery.js"></script>
-        <script src="__PUBLIC__/Album-Admin/assets/js/bootstrap.min.js"></script>
-        <script class="include" type="text/javascript" src="__PUBLIC__/Album-Admin/assets/js/jquery.dcjqaccordion.2.7.js"></script>
-        <script src="__PUBLIC__/Album-Admin/assets/js/jquery.scrollTo.min.js"></script>
-        <script src="__PUBLIC__/Album-Admin/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-        <script type="text/javascript" src="__PUBLIC__/Album-Admin/js/app.js"></script>
-        <script src="__PUBLIC__/Album-Admin/js/alertify.min.js"></script>
-        <link rel="stylesheet" href="__PUBLIC__/Album-Admin/css/alertify.min.css">
-        <link rel="stylesheet" href="__PUBLIC__/Album-Admin/css/default.min.css">
-        <script src="__PUBLIC__/Album-Admin/assets/js/common-scripts.js"></script>
-    </body>
+    </section>
+    <script src="__PUBLIC__/Album-Admin/assets/js/jquery.js"></script>
+    <script src="__PUBLIC__/Album-Admin/assets/js/bootstrap.min.js"></script>
+    <script class="include" type="text/javascript" src="__PUBLIC__/Album-Admin/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+    <script src="__PUBLIC__/Album-Admin/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="__PUBLIC__/Album-Admin/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script type="text/javascript" src="__PUBLIC__/Album-Admin/js/app.js"></script>
+    <script src="__PUBLIC__/Album-Admin/js/alertify.min.js"></script>
+    <link rel="stylesheet" href="__PUBLIC__/Album-Admin/css/alertify.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Album-Admin/css/default.min.css">
+    <script src="__PUBLIC__/Album-Admin/assets/js/common-scripts.js"></script>
+</body>
 
 </html>

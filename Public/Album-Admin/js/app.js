@@ -3,7 +3,7 @@
  */
 function postlogin() {
     if (document.getElementById('user').value == '' || document.getElementById('pswd').value == '') {
-        alertify.notify('请输入用户名和密码！', 'error', 5, function(){ console.log('Get form infomation failed!'); });
+        alertify.notify('请输入用户名和密码！', 'error', 5, function () { console.log('Get form infomation failed!'); });
         return false;
     }
     var user = document.getElementById('user').value;
@@ -23,15 +23,15 @@ function postlogin() {
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
                 //服务器返回注册成功
-                alertify.notify('登录成功！3秒后自动跳转。', 'success', 3, function(){ console.log('Login successed'); });
-                window.setTimeout(function(){
+                alertify.notify('登录成功！3秒后自动跳转。', 'success', 3, function () { console.log('Login successed'); });
+                window.setTimeout(function () {
                     location.href = getUrlParam('target');
-                },3000);
+                }, 3000);
                 return true;
             }
             else {
                 //注册被服务器拒绝
-                alertify.notify('用户名或密码错误！', 'error', 5, function(){ console.log('登录发生异常，可能是用户名或密码有误。错误代码：' + authcode + '，错误详情：' + message + '。此信息仅供技术人员鉴定系统运行状态！'); });
+                alertify.notify('用户名或密码错误！', 'error', 5, function () { console.log('登录发生异常，可能是用户名或密码有误。错误代码：' + authcode + '，错误详情：' + message + '。此信息仅供技术人员鉴定系统运行状态！'); });
                 //alert("登录失败！用户名或密码不正确，错误原因：" + message);
                 document.getElementById('pswd').value = '';
                 document.getElementById('pswd').focus();
@@ -39,7 +39,7 @@ function postlogin() {
             }
         },
         fail: function (status) {
-            alertify.notify('链接服务器失败，请检查！', 'error', 5, function(){ console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
+            alertify.notify('链接服务器失败，请检查！', 'error', 5, function () { console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
             return false;
         }
     });
@@ -51,7 +51,7 @@ function postlogin() {
  */
 function postreg(s_token = '0') {
     if (document.getElementById('user').value == '' || document.getElementById('pswd').value == '' || document.getElementById('mail').value == '') {
-        alertify.notify('表单内容存在空白，请重试！', 'error', 5, function(){ console.log('Form something empty!'); });
+        alertify.notify('表单内容存在空白，请重试！', 'error', 5, function () { console.log('Form something empty!'); });
         return false;
     }
     var user = document.getElementById('user').value;
@@ -74,7 +74,7 @@ function postreg(s_token = '0') {
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
                 //服务器返回注册成功
-                alertify.notify('注册成功！', 'success', 5, function(){ console.log('Regist successed'); });
+                alertify.notify('注册成功！', 'success', 5, function () { console.log('Regist successed'); });
                 if (s_token != 0) {
                     return true;
                 }
@@ -85,12 +85,12 @@ function postreg(s_token = '0') {
             }
             else {
                 //注册被服务器拒绝
-                alertify.notify('注册失败！错误原因：' + message, 'error', 5, function(){ console.log('注册发生异常，但远程服务器正确的响应了本次请求。错误代码：' + authcode + '，错误详情：' + message + '。此信息仅供技术人员鉴定系统运行状态！'); });
+                alertify.notify('注册失败！错误原因：' + message, 'error', 5, function () { console.log('注册发生异常，但远程服务器正确的响应了本次请求。错误代码：' + authcode + '，错误详情：' + message + '。此信息仅供技术人员鉴定系统运行状态！'); });
                 return authcode;
             }
         },
         fail: function (status) {
-            alertify.notify('远程服务器忙碌' + message, 'error', 5, function(){ console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status)} );
+            alertify.notify('远程服务器忙碌' + message, 'error', 5, function () { console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status) });
             return false;
         }
     });
@@ -114,20 +114,20 @@ function logout() {
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
                 //服务器返回注册成功
-                alertify.notify('注销成功！5秒后自动跳转。', 'success', 5, function(){ console.log('Logout successed'); });
-                window.setTimeout(function(){
+                alertify.notify('注销成功！5秒后自动跳转。', 'success', 5, function () { console.log('Logout successed'); });
+                window.setTimeout(function () {
                     location.href = "./admin.php?c=Login";
-                },5000);
+                }, 5000);
                 return true;
             }
             else {
                 //注册被服务器拒绝
-                alertify.notify('注销失败！错误原因：' + message, 'error', 5, function(){ console.log('注销发生异常，但远程服务器正确的响应了本次请求。错误代码：' + authcode + '，错误详情：' + message + '。此信息仅供技术人员鉴定系统运行状态！'); });
+                alertify.notify('注销失败！错误原因：' + message, 'error', 5, function () { console.log('注销发生异常，但远程服务器正确的响应了本次请求。错误代码：' + authcode + '，错误详情：' + message + '。此信息仅供技术人员鉴定系统运行状态！'); });
                 return authcode;
             }
         },
         fail: function (status) {
-            alertify.notify('远程服务器忙碌！', 'error', 5, function(){ console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
+            alertify.notify('远程服务器忙碌！', 'error', 5, function () { console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
             return false;
         }
     });
@@ -161,16 +161,16 @@ function submit_main() {
             var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
-                alertify.notify(message, 'success', 5, function(){ console.log('Main info update succeed!'); });
+                alertify.notify(message, 'success', 5, function () { console.log('Main info update succeed!'); });
                 return true;
             }
             else {
-                alertify.notify('提交失败，错误详情：' + message, 'error', 5, function(){ console.log('Main info update failed!'); });
+                alertify.notify('提交失败，错误详情：' + message, 'error', 5, function () { console.log('Main info update failed!'); });
                 return true;
             }
         },
         fail: function (status) {
-            alertify.notify('远程服务器忙碌！', 'error', 5, function(){ console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
+            alertify.notify('远程服务器忙碌！', 'error', 5, function () { console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
             return false;
         }
     });
@@ -181,14 +181,14 @@ function submit_main() {
  */
 function create_navi() {
     if (document.getElementById('add_navname').value == '' || document.getElementById('add_navlink').value == '') {
-        alertify.notify('表单内容存在空白，请重试！', 'error', 5, function(){ console.log('Form something empty!'); });
+        alertify.notify('表单内容存在空白，请重试！', 'error', 5, function () { console.log('Form something empty!'); });
         return false;
     }
     var m_navi = document.getElementById('add_navname').value;
     var m_link = document.getElementById('add_navlink').value;
     var reg = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
     if (!reg.test(m_link)) {
-        alertify.notify('网址链接不符合HTTP规范，请使用“http://”或“https://”为前缀的标准URL。', 'error', 5, function(){ console.log('Get form infomation failed!'); });
+        alertify.notify('网址链接不符合HTTP规范，请使用“http://”或“https://”为前缀的标准URL。', 'error', 5, function () { console.log('Get form infomation failed!'); });
         return false;
     }
     var m_jsondata = '{"m_navi":"' + m_navi + '","m_link":"' + m_link + '"}';
@@ -208,17 +208,17 @@ function create_navi() {
             var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
-                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 5, function(){ console.log('Navigation info create succeed!'); });
-                var autoReload = window.setTimeout('location.reload()',3000);
+                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 5, function () { console.log('Navigation info create succeed!'); });
+                var autoReload = window.setTimeout('location.reload()', 3000);
                 return true;
             }
             else {
-                alertify.notify('提交失败，错误详情：' + message, 'error', 5, function(){ console.log('Navigation info create failed!'); });
+                alertify.notify('提交失败，错误详情：' + message, 'error', 5, function () { console.log('Navigation info create failed!'); });
                 return true;
             }
         },
         fail: function (status) {
-            alertify.notify('远程服务器忙碌！', 'error', 5, function(){ console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
+            alertify.notify('远程服务器忙碌！', 'error', 5, function () { console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
             return false;
         }
     });
@@ -242,7 +242,7 @@ function submit_navi(type, nid) {
         var operation = '移除';
     }
     else {
-        alertify.notify('非法操作类型：' + type, 'error', 5, function(){ console.log('Illegal operation.'); });
+        alertify.notify('非法操作类型：' + type, 'error', 5, function () { console.log('Illegal operation.'); });
     }
     if (!confirm('您确认继续' + operation + 'ID为：' + nid + '的导航信息么？')) {
         return false;
@@ -264,17 +264,17 @@ function submit_navi(type, nid) {
             var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
-                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 2, function(){ console.log('Navigation info update succeed!'); });
-                var autoReload = window.setTimeout('location.reload()',3000);
+                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 2, function () { console.log('Navigation info update succeed!'); });
+                var autoReload = window.setTimeout('location.reload()', 3000);
                 return true;
             }
             else {
-                alertify.notify(operation + '失败，错误详情：' + message, 'error', 5, function(){ console.log('Navigation info update failed!'); });
+                alertify.notify(operation + '失败，错误详情：' + message, 'error', 5, function () { console.log('Navigation info update failed!'); });
                 return true;
             }
         },
         fail: function (status) {
-            alertify.notify('远程服务器忙碌！', 'error', 5, function(){ console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
+            alertify.notify('远程服务器忙碌！', 'error', 5, function () { console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
             return false;
         }
     });
@@ -297,10 +297,10 @@ function submit_user(type, uid) {
         var m_user = document.getElementById('uname_' + uid).innerText;
         var m_pswd = document.getElementById('upass_' + uid).value;
         var m_mail = document.getElementById('umail_' + uid).innerText;
-        if(m_pswd == ''){
+        if (m_pswd == '') {
             var odata = '{"m_user":"' + m_user + '","m_mail":"' + m_mail + '"}';
         }
-        else{
+        else {
             var odata = '{"m_user":"' + m_user + '","m_pswd":"' + MD5(m_pswd) + '","m_mail":"' + m_mail + '"}';
         }
         var operation = '更新';
@@ -310,7 +310,7 @@ function submit_user(type, uid) {
         var operation = '移除';
     }
     else {
-        alertify.notify('非法操作类型：' + type, 'error', 5, function(){ console.log('Illegal operation.'); });
+        alertify.notify('非法操作类型：' + type, 'error', 5, function () { console.log('Illegal operation.'); });
     }
     if (!confirm('您确认继续' + operation + 'ID为：' + uid + '的用户信息么？')) {
         return false;
@@ -332,17 +332,17 @@ function submit_user(type, uid) {
             var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
-                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 2, function(){ console.log('User info update succeed!'); });
-                var autoReload = window.setTimeout('location.reload()',3000);
+                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 2, function () { console.log('User info update succeed!'); });
+                var autoReload = window.setTimeout('location.reload()', 3000);
                 return true;
             }
             else {
-                alertify.notify(operation + '失败，错误详情：' + message, 'error', 5, function(){ console.log('User info update failed!'); });
+                alertify.notify(operation + '失败，错误详情：' + message, 'error', 5, function () { console.log('User info update failed!'); });
                 return true;
             }
         },
         fail: function (status) {
-            alertify.notify('远程服务器忙碌！', 'error', 5, function(){ console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
+            alertify.notify('远程服务器忙碌！', 'error', 5, function () { console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
             return false;
         }
     });
@@ -353,7 +353,7 @@ function submit_user(type, uid) {
  */
 function create_cover() {
     if (document.getElementById('add_albumname').value == '' || document.getElementById('add_albumstyle').value == '' || document.getElementById('add_albumcover').value == '' || document.getElementById('add_albuminst').value == '') {
-        alertify.notify('表单内容存在空白，请重试！', 'error', 5, function(){ console.log('Form something empty!'); });
+        alertify.notify('表单内容存在空白，请重试！', 'error', 5, function () { console.log('Form something empty!'); });
         return false;
     }
     var m_cname = document.getElementById('add_albumname').value;
@@ -363,7 +363,7 @@ function create_cover() {
     var RegUrl = new RegExp();
     RegUrl.compile('^[A-Za-z]+://[A-Za-z0-9-_]+\\.[A-Za-z0-9-_%&\?\/.=]+$');
     if (!RegUrl.test(m_cimg)) {
-        alertify.notify('图片链接不符合HTTP规范，请使用“http://”或“https://”为前缀的标准URL。', 'error', 5, function(){ console.log('Get form infomation failed!'); });
+        alertify.notify('图片链接不符合HTTP规范，请使用“http://”或“https://”为前缀的标准URL。', 'error', 5, function () { console.log('Get form infomation failed!'); });
         return false;
     }
     var m_jsondata = '{"m_cname":"' + m_cname + '","m_cstyle":"' + parseInt(m_cstyle) + '","m_cimg":"' + m_cimg + '","m_cdetail":"' + m_cdetail + '","m_copen":1}';
@@ -383,17 +383,17 @@ function create_cover() {
             var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
-                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 5, function(){ console.log('Cover info create succeed!'); });
-                var autoReload = window.setTimeout('location.reload()',3000);
+                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 5, function () { console.log('Cover info create succeed!'); });
+                var autoReload = window.setTimeout('location.reload()', 3000);
                 return true;
             }
             else {
-                alertify.notify('提交失败，错误详情：' + message, 'error', 5, function(){ console.log('Cover info create failed!'); });
+                alertify.notify('提交失败，错误详情：' + message, 'error', 5, function () { console.log('Cover info create failed!'); });
                 return true;
             }
         },
         fail: function (status) {
-            alertify.notify('远程服务器忙碌！', 'error', 5, function(){ console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
+            alertify.notify('远程服务器忙碌！', 'error', 5, function () { console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
             return false;
         }
     });
@@ -418,7 +418,7 @@ function update_photo(type, pid) {
         var operation = '移除';
     }
     else {
-        alertify.notify('非法操作类型：' + type, 'error', 5, function(){ console.log('Illegal operation.'); });
+        alertify.notify('非法操作类型：' + type, 'error', 5, function () { console.log('Illegal operation.'); });
     }
     if (!confirm('您确认继续' + operation + 'ID为：' + pid + '的相片信息么？')) {
         return false;
@@ -440,17 +440,17 @@ function update_photo(type, pid) {
             var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
-                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 2, function(){ console.log('Cover info update succeed!'); });
-                var autoReload = window.setTimeout('location.reload()',3000);
+                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 2, function () { console.log('Cover info update succeed!'); });
+                var autoReload = window.setTimeout('location.reload()', 3000);
                 return true;
             }
             else {
-                alertify.notify(operation + '失败，错误详情：' + message, 'error', 5, function(){ console.log('Cover info update failed!'); });
+                alertify.notify(operation + '失败，错误详情：' + message, 'error', 5, function () { console.log('Cover info update failed!'); });
                 return true;
             }
         },
         fail: function (status) {
-            alertify.notify('远程服务器忙碌！', 'error', 5, function(){ console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
+            alertify.notify('远程服务器忙碌！', 'error', 5, function () { console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
             return false;
         }
     });
@@ -480,7 +480,7 @@ function submit_cover(type, cid) {
         var operation = '移除';
     }
     else {
-        alertify.notify('非法操作类型：' + type, 'error', 5, function(){ console.log('Illegal operation.'); });
+        alertify.notify('非法操作类型：' + type, 'error', 5, function () { console.log('Illegal operation.'); });
     }
     if (!confirm('您确认继续' + operation + 'ID为：' + cid + '的相册信息么？')) {
         return false;
@@ -502,17 +502,17 @@ function submit_cover(type, cid) {
             var authcode = xml.getElementsByTagName("code")[0].firstChild.nodeValue;
             var message = xml.getElementsByTagName("message")[0].firstChild.nodeValue;
             if (authcode == 200) {
-                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 2, function(){ console.log('Cover info update succeed!'); });
-                var autoReload = window.setTimeout('location.reload()',3000);
+                alertify.notify(message + '<br>页面将在3秒后自动重新载入！', 'success', 2, function () { console.log('Cover info update succeed!'); });
+                var autoReload = window.setTimeout('location.reload()', 3000);
                 return true;
             }
             else {
-                alertify.notify(operation + '失败，错误详情：' + message, 'error', 5, function(){ console.log('Cover info update failed!'); });
+                alertify.notify(operation + '失败，错误详情：' + message, 'error', 5, function () { console.log('Cover info update failed!'); });
                 return true;
             }
         },
         fail: function (status) {
-            alertify.notify('远程服务器忙碌！', 'error', 5, function(){ console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
+            alertify.notify('远程服务器忙碌！', 'error', 5, function () { console.log('发生异常，系统无法正常请求远程服务器。请检查本地网络情况！如果网络一切正常，可能是由于远程服务器正在维护或处于忙碌状态，请稍候再次尝试或联系技术人员！错误信息：' + status); });
             return false;
         }
     });
@@ -611,17 +611,17 @@ function getParams(data) {
  * @returns {string}
  */
 function getUrlParam(name) {
-	var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
     var r = window.location.search.substr(1).match(reg);  //匹配目标参数
 	/*
 	// 由于本实例中url参数将用于重定向，而某些情况下url参数会以null形式返回导致出现404问题
 	// 所以这里特别修改了空值时的返回模型
 	if (r != null) return unescape(r[2]); return null; //返回参数值
 	*/
-	if (r != null) {
-		return unescape(r[2]); //返回参数值
-	}
-	else {
-		return "/";
-	}
+    if (r != null) {
+        return unescape(r[2]); //返回参数值
+    }
+    else {
+        return "/";
+    }
 }
