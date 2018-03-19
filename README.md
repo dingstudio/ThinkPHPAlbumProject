@@ -16,12 +16,14 @@ PHPAlbum-一款基于ThinkPHP V3开发的个人相册系统
 * [x] APIToken鉴权
 * [x] 支持整合统一身份认证（目前仅支持DingStudio Single Sign On协议）
 * [ ] 前台用户密码重置
+* [ ] 开箱即用（OOBE）支持
 
 
 ## 部署方法
 
+*   由于尚未设计本系统的OOBE引导程序，首次运行的数据结构导入操作请用户自行完成！
 *   导入config目录下的myalbum.sql到mysql数据库服务器，并修正config.php中的数据库配置信息。
-*   启动Web服务器即可使用，后台管理地址：admin.php 首次访问请先点击登录页面下侧的注册按钮导入首个用户信息或使用统一身份认证平台免密登录
+*   启动Web服务器即可使用，后台管理地址：admin.php 首次访问请先点击登录页面下侧的注册按钮导入首个用户信息或使用统一身份认证平台免密登录。
 
 ## 重要提示
 
@@ -34,6 +36,10 @@ PHPAlbum-一款基于ThinkPHP V3开发的个人相册系统
 *   MySQL建议版本：5.5及以上，经测试兼容最新MySQL5.7
 *   RestAPI支持：通过UrlRewrite实现
 *   PHP所需扩展：bcmath,bz2,ctype,curl,dom,gd,hash,iconv,json,mbstring,mysqli,openssl,pdo,pdo_mysql,session,xml,zip
+
+## Buglist
+*   使用统一身份认证登录后退出平台将无法使用本地用户数据库登录，如需使用本地登录，请先清理浏览器cookie。
+*   相片上传过程尚未使用异步技术，导致无法观看上传进度。当网络状态较差或文件较大时，上传时间若超出php的execute_time_limit值将会被服务端打断。请通过设置set_time_limit(0)实现长连接！
 
 ## 友好的开源协议
 
