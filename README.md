@@ -25,7 +25,15 @@ PHPAlbum-一款基于ThinkPHP V3开发的个人相册系统
 
 ## 重要提示
 
-*	本系统首次安装后由于相册数据表默认为空，可能会导致前台页面提示ajax数据拉取失败。请直接忽视并使用初始用户名密码登录后台，上传你的第一张相片，即可解决此问题！
+*   本系统首次安装后由于相册数据表默认为空，可能会导致前台页面提示ajax数据拉取失败。请直接忽视并使用初始用户名密码登录后台，上传你的第一张相片，即可解决此问题！
+*   统一身份认证（Single Sign On）协议需要OpenSSL支持，请确保在PHP.INI中开启OpenSSL支持扩展。
+
+## 运行环境
+*   Web服务器：IIS/Apache/Nginx 已测试可用
+*   PHP后端建议版本：5.5及以上，经测试兼容最新PHP7.2
+*   MySQL建议版本：5.5及以上，经测试兼容最新MySQL5.7
+*   RestAPI支持：通过UrlRewrite实现
+*   PHP所需扩展：bcmath,bz2,ctype,curl,dom,gd,hash,iconv,json,mbstring,mysqli,openssl,pdo,pdo_mysql,session,xml,zip
 
 ## 友好的开源协议
 
