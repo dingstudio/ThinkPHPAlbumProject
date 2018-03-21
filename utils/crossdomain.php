@@ -6,9 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     if (!isset($_REQUEST['username']) || !isset($_REQUEST['usermail']) || !isset($_REQUEST['newtoken'])) {
         die('{"status":false}');
-    }
-    else {
-        $user = file_get_contents('https://passport.dingstudio.cn/api?format=json&action=verify&token='.htmlspecialchars($_REQUEST['newtoken']).'&reqtime='.sha1(date('YmdHis',time())));
+    } else {
+        $user = file_get_contents('https://passport.dingstudio.cn/api?format=json&action=verify&token=' . htmlspecialchars($_REQUEST['newtoken']) . '&reqtime=' . sha1(date('YmdHis', time())));
         $userinfo = json_decode($user);
         if (isset($userinfo->data->username) && isset($userinfo->data->newtoken)) {
             setcookie('myalbum_token', $userinfo->data->newtoken, time() + 1800, '/', $_SERVER['HTTP_HOST']);
@@ -16,8 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['myalbum_token'] = $userinfo->data->newtoken;
             $_SESSION['myalbum_email'] = $userinfo->data->usermail;
             die('{"status":true}');
-        }
-        else {
+        } else {
             die('{"status":false}');
         }
     }

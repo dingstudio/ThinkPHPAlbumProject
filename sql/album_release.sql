@@ -41,7 +41,7 @@ CREATE TABLE `myalbum_basicinfo` (
 --
 
 INSERT INTO `myalbum_basicinfo` (`myalbum_name`, `myalbum_nickname`, `myalbum_icon`, `myalbum_logo`, `myalbum_saying`, `myalbum_author`, `myalbum_copyright`) VALUES
-('测试相册', 'Test Album', 'http://cdn-img.easyicon.net/png/11821/1182127.gif', 'http://cdn-img.easyicon.net/png/11821/1182127.gif', '您正在访问一个处于开发阶段的相册网站', 'DingStudio', 'DingCloud');
+('测试相册', 'Test Album', 'http://static.album.dingstudio.cn/Public/1182127.gif', 'http://static.album.dingstudio.cn/Public/1182127.gif', '您正在访问一个处于开发阶段的相册网站', 'DingStudio', 'DingCloud');
 
 -- --------------------------------------------------------
 
@@ -57,13 +57,6 @@ CREATE TABLE `myalbum_cover` (
   `inst` varchar(255) DEFAULT NULL,
   `coveraddr` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `myalbum_cover`
---
-
-INSERT INTO `myalbum_cover` (`cid`, `style`, `open`, `name`, `inst`, `coveraddr`) VALUES
-(1, 3, 1, '测试相册', '测试相册集，可自行修改或删除', 'http://longpic.dingstudio.cn/Public/Album-Admin/images/banner_demo.jpg');
 
 -- --------------------------------------------------------
 
@@ -114,13 +107,6 @@ CREATE TABLE `myalbum_users` (
   `usertoken` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `myalbum_users`
---
-
-INSERT INTO `myalbum_users` (`uid`, `username`, `userpwd`, `usertoken`, `email`) VALUES
-(1, 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '560edbd23a46984600ca608db6e9d0ec6f2816f8', 'admin@example.org');
 
 --
 -- Indexes for dumped tables
