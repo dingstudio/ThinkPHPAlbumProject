@@ -49,7 +49,7 @@ function postlogin() {
  * 用户注册公用逻辑
  * @param {string} s_token 会话密钥
  */
-function postreg(s_token = '0') {
+function postreg(s_token) {
     if (document.getElementById('user').value == '' || document.getElementById('pswd').value == '' || document.getElementById('mail').value == '') {
         alertify.notify('表单内容存在空白，请重试！', 'error', 5, function () { console.log('Form something empty!'); });
         return false;
@@ -75,7 +75,7 @@ function postreg(s_token = '0') {
             if (authcode == 200) {
                 //服务器返回注册成功
                 alertify.notify('注册成功！', 'success', 5, function () { console.log('Regist successed'); });
-                if (s_token != 0) {
+                if (s_token != '0') {
                     return true;
                 }
                 else {
